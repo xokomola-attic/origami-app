@@ -83,6 +83,11 @@ dependencies {
 	// runtime 'com.oracle:ojdbc7:12.1.0.2'
 }
 
+def toCamelCase(text) {
+    text = text.replaceAll( "(-)([A-Za-z0-9])", { it[2].toUpperCase() } )
+    return text.capitalize()            
+}
+
 // shadowPlugin adds a promo banner task, no thanks!
 tasks.remove(knows)
 
@@ -166,7 +171,7 @@ task xqtest {
     def xqDir = file(System.properties['org.basex.WEBPATH'])
     modules.tokenize(';').each { 
         module ->
-        def moduleName = module.capitalize()
+        def moduleName = toCamelCase(module)
         task "test$moduleName" (type: JavaExec) {
             description "Run tests for module $moduleName"
             def moduleTestDir = "$xqDir/$module"
