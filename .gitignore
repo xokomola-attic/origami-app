@@ -1,0 +1,12 @@
+.basex
+.basexgui
+.basexhistory
+project.xpr
+TODO.md
+.gradle/
+_tmp/
+data/
+repo/
+build/
+webapp/origami/
+webapp/origami-examples/
